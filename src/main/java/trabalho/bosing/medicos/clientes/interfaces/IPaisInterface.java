@@ -1,5 +1,5 @@
 package trabalho.bosing.medicos.clientes.interfaces;
 
-public interface EnderecoInterface {
+public interface IPaisInterface {
     
 }
