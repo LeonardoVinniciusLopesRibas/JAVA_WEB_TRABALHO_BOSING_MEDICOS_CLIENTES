@@ -1,5 +1,5 @@
 package trabalho.bosing.medicos.clientes.interfaces;
 
-public interface ICidadeInterface {
+public interface ICidadeInterface{
     
 }

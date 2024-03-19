@@ -1,5 +1,27 @@
 package trabalho.bosing.medicos.clientes.model;
 
-public class EspecialidadeModel {
+import trabalho.bosing.medicos.clientes.abastract.IdAtivoAbstract;
+
+public class EspecialidadeModel extends IdAtivoAbstract{
+    
+    private String descricao;
+
+    public EspecialidadeModel() {
+    }
+
+    public EspecialidadeModel(String descricao, int id, boolean ativo) {
+        super(id, ativo);
+        this.descricao = descricao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+    
+    
     
 }
