@@ -6,33 +6,47 @@ import java.util.ArrayList;
 import trabalho.bosing.medicos.clientes.exception.ValidacaoException;
 import trabalho.bosing.medicos.clientes.interfaces.ICidadeInterface;
 import trabalho.bosing.medicos.clientes.model.CidadeModel;
+import trabalho.bosing.medicos.clientes.service.CidadeService;
 
 @WebService(endpointInterface = "trabalho.bosing.medicos.clientes.interfaces.ICidadeInterface")
 public class CidadeWebService implements ICidadeInterface{
 
+    CidadeService cs = new CidadeService();
+
+    
     @Override
     public CidadeModel insert(CidadeModel cm) throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return cs.insert(cm);
+        
     }
 
     @Override
     public ArrayList<CidadeModel> selectAll() throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return cs.selectAll();
+        
     }
 
     @Override
     public CidadeModel selectById(int id) throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return cs.selectById(id);
+        
     }
 
     @Override
     public CidadeModel update(CidadeModel cm) throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        return cs.update(cm);
+        
     }
 
     @Override
     public CidadeModel desativated(CidadeModel cm) throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return cs.desativated(cm);
+
     }
     
 }

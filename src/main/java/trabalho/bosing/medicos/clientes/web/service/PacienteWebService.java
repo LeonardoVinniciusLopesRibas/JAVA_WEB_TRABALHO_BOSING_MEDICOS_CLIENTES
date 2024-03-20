@@ -6,33 +6,46 @@ import java.util.ArrayList;
 import trabalho.bosing.medicos.clientes.exception.ValidacaoException;
 import trabalho.bosing.medicos.clientes.interfaces.IPacienteInterface;
 import trabalho.bosing.medicos.clientes.model.PacienteModel;
+import trabalho.bosing.medicos.clientes.service.PacienteService;
 
 @WebService(endpointInterface = "trabalho.bosing.medicos.clientes.interfaces.IPacienteInterface")
 public class PacienteWebService implements IPacienteInterface{
 
-    @Override
+    PacienteService ps = new PacienteService();
+    
+    @Override;
     public PacienteModel insert(PacienteModel pm) throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return ps.insert(pm);
+
     }
 
     @Override
     public ArrayList<PacienteModel> selectAll() throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return ps.selectAll();
+
     }
 
     @Override
     public PacienteModel selectById(int id) throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return ps.selectById(id);
+
     }
 
     @Override
     public PacienteModel update(PacienteModel pm) throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return ps.update(pm);
+        
     }
 
     @Override
     public PacienteModel desativated(PacienteModel pm) throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return ps.desativated(pm);
+        
     }
     
 }

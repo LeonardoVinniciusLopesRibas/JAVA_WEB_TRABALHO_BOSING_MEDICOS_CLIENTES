@@ -6,33 +6,46 @@ import java.util.ArrayList;
 import trabalho.bosing.medicos.clientes.exception.ValidacaoException;
 import trabalho.bosing.medicos.clientes.interfaces.IEstadoInterface;
 import trabalho.bosing.medicos.clientes.model.EstadoModel;
+import trabalho.bosing.medicos.clientes.service.EstadoService;
 
 @WebService(endpointInterface = "trabalho.bosing.medicos.clientes.interfaces.IEstadoInterface")
 public class EstadoWebService implements IEstadoInterface{
 
-    @Override
+    EstadoService ests = new EstadoService();
+    
+    @Override;
     public EstadoModel insert(EstadoModel estm) throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return ests.insert(estm);
+        
     }
 
     @Override
     public ArrayList<EstadoModel> selectAll() throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return ests.selectAll();
+
     }
 
     @Override
     public EstadoModel selectById(int id) throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return ests.selectById(id);
+
     }
 
     @Override
     public EstadoModel update(EstadoModel estm) throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return ests.update(estm);
+
     }
 
     @Override
     public EstadoModel desativated(EstadoModel estm) throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return ests.desativated(estm);
+        
     }
     
 }

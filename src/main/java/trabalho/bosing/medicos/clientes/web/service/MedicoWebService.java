@@ -6,33 +6,46 @@ import java.util.ArrayList;
 import trabalho.bosing.medicos.clientes.exception.ValidacaoException;
 import trabalho.bosing.medicos.clientes.interfaces.IMedicoInterface;
 import trabalho.bosing.medicos.clientes.model.MedicoModel;
+import trabalho.bosing.medicos.clientes.service.MedicoService;
 
 @WebService(endpointInterface = "trabalho.bosing.medicos.clientes.interfaces.IMedicoInterface")
 public class MedicoWebService implements IMedicoInterface{
 
+    MedicoService ms = new MedicoService();
+    
     @Override
     public MedicoModel insert(MedicoModel mm) throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return ms.insert(mm);
+
     }
 
     @Override
     public ArrayList<MedicoModel> selectAll() throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return ms.selectAll();
+
     }
 
     @Override
     public MedicoModel selectById(int id) throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return ms.selectById(id);
+
     }
 
     @Override
     public MedicoModel update(MedicoModel mm) throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return ms.update(mm);
+
     }
 
     @Override
     public MedicoModel desativated(MedicoModel mm) throws SQLException, ValidacaoException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return ms.desativated(mm);
+
     }
     
 }
