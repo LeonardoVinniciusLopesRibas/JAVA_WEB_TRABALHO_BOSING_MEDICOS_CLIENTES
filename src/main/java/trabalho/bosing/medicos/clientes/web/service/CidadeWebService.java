@@ -7,7 +7,7 @@ import trabalho.bosing.medicos.clientes.exception.ValidacaoException;
 import trabalho.bosing.medicos.clientes.interfaces.ICidadeInterface;
 import trabalho.bosing.medicos.clientes.model.CidadeModel;
 
-@WebService(endpointInterface = "trabalho.bosing.medicos.clientes.web.service.ICidadeInterface")
+@WebService(endpointInterface = "trabalho.bosing.medicos.clientes.interfaces.ICidadeInterface")
 public class CidadeWebService implements ICidadeInterface{
 
     @Override

@@ -7,7 +7,7 @@ import trabalho.bosing.medicos.clientes.exception.ValidacaoException;
 import trabalho.bosing.medicos.clientes.interfaces.IPaisInterface;
 import trabalho.bosing.medicos.clientes.model.PaisModel;
 
-@WebService(endpointInterface = "trabalho.bosing.medicos.clientes.web.service.IPaisInterface")
+@WebService(endpointInterface = "trabalho.bosing.medicos.clientes.interfaces.IPaisInterface")
 public class PaisWebService implements IPaisInterface{
 
     @Override

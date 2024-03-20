@@ -7,7 +7,7 @@ import trabalho.bosing.medicos.clientes.exception.ValidacaoException;
 import trabalho.bosing.medicos.clientes.interfaces.IEnderecoInterface;
 import trabalho.bosing.medicos.clientes.model.EnderecoModel;
 
-@WebService(endpointInterface = "trabalho.bosing.medicos.clientes.web.service.IEnderecoInterface")
+@WebService(endpointInterface = "trabalho.bosing.medicos.clientes.interfaces.IEnderecoInterface")
 public class EnderecoWebService implements IEnderecoInterface{
 
     @Override
