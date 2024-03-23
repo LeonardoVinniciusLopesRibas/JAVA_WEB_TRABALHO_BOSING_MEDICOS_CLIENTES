@@ -13,7 +13,7 @@ public class PaisWebService implements IPaisInterface{
 
     PaisService paiss = new PaisService();
     
-    @Override;
+    @Override
     public PaisModel insert(PaisModel paism) throws SQLException, ValidacaoException {
 
         return paiss.insert(paism);

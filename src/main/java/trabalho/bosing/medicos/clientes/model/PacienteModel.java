@@ -1,66 +1,47 @@
 package trabalho.bosing.medicos.clientes.model;
 
-import trabalho.bosing.medicos.clientes.abastract.IdAtivoAbstract;
 
-public class PacienteModel extends IdAtivoAbstract{
+public class PacienteModel{
     
-    private String nome;
-    private String email;
-    private String telefone;
-    private String cpf;
-    private EnderecoModel endereco_id;
+    private int id;
+    private boolean ativo;
+    private PessoaModel pessoaModel;
 
     public PacienteModel() {
     }
 
-    public PacienteModel(String nome, String email, String telefone, String cpf, EnderecoModel endereco_id, int id, boolean ativo) {
-        super(id, ativo);
-        this.nome = nome;
-        this.email = email;
-        this.telefone = telefone;
-        this.cpf = cpf;
-        this.endereco_id = endereco_id;
+    public PacienteModel(int id, boolean ativo, PessoaModel pessoaModel) {
+        this.id = id;
+        this.ativo = ativo;
+        this.pessoaModel = pessoaModel;
     }
 
-    public String getNome() {
-        return nome;
+    public int getId() {
+        return id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public boolean isAtivo() {
+        return ativo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public PessoaModel getPessoaModel() {
+        return pessoaModel;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setPessoaModel(PessoaModel pessoaModel) {
+        this.pessoaModel = pessoaModel;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public EnderecoModel getEndereco_id() {
-        return endereco_id;
-    }
-
-    public void setEndereco_id(EnderecoModel endereco_id) {
-        this.endereco_id = endereco_id;
-    }
+    
+    
     
     
     

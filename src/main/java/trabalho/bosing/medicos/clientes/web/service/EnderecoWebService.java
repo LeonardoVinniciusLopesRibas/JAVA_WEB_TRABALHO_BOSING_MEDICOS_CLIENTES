@@ -13,7 +13,7 @@ public class EnderecoWebService implements IEnderecoInterface{
     
     EnderecoService es = new EnderecoService();
 
-    @Override;
+    @Override
     public EnderecoModel insert(EnderecoModel em) throws SQLException, ValidacaoException {
 
         return es.insert(em);

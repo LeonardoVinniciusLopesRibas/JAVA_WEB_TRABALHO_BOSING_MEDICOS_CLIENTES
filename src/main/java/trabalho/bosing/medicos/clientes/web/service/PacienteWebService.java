@@ -13,7 +13,7 @@ public class PacienteWebService implements IPacienteInterface{
 
     PacienteService ps = new PacienteService();
     
-    @Override;
+    @Override
     public PacienteModel insert(PacienteModel pm) throws SQLException, ValidacaoException {
 
         return ps.insert(pm);

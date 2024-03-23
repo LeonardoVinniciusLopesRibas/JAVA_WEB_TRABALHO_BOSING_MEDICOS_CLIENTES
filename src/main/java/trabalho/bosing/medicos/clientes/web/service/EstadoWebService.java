@@ -13,7 +13,7 @@ public class EstadoWebService implements IEstadoInterface{
 
     EstadoService ests = new EstadoService();
     
-    @Override;
+    @Override
     public EstadoModel insert(EstadoModel estm) throws SQLException, ValidacaoException {
 
         return ests.insert(estm);

@@ -13,7 +13,7 @@ public class EspecialidadeWebService implements IEspecialidadeInterface{
 
     EspecialidadeService eps = new EspecialidadeService();
     
-    @Override;
+    @Override
     public EspecialidadeModel insert(EspecialidadeModel epm) throws SQLException, ValidacaoException {
 
         return eps.insert(epm);

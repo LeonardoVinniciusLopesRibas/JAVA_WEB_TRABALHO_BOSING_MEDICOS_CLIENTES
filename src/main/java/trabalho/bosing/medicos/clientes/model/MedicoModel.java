@@ -1,51 +1,48 @@
 package trabalho.bosing.medicos.clientes.model;
 
-import trabalho.bosing.medicos.clientes.abastract.IdAtivoAbstract;
 
-public class MedicoModel extends IdAtivoAbstract{
+public class MedicoModel{
     
-    private String nome;
-    private String email;
-    private String telefone;
+    private int id;
+    private boolean ativo;
+    private PessoaModel pessoaModel;    
     private String crm;
     private EspecialidadeModel especialidade_id;
-    private EnderecoModel endereco_id;
+    
 
     public MedicoModel() {
     }
 
-    public MedicoModel(String nome, String email, String telefone, String crm, EspecialidadeModel especialidade_id, EnderecoModel endereco_id, int id, boolean ativo) {
-        super(id, ativo);
-        this.nome = nome;
-        this.email = email;
-        this.telefone = telefone;
+    public MedicoModel(int id, boolean ativo, PessoaModel pessoaModel, String crm, EspecialidadeModel especialidade_id) {
+        this.id = id;
+        this.ativo = ativo;
+        this.pessoaModel = pessoaModel;
         this.crm = crm;
         this.especialidade_id = especialidade_id;
-        this.endereco_id = endereco_id;
     }
 
-    public String getNome() {
-        return nome;
+    public int getId() {
+        return id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public boolean isAtivo() {
+        return ativo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public PessoaModel getPessoaModel() {
+        return pessoaModel;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setPessoaModel(PessoaModel pessoaModel) {
+        this.pessoaModel = pessoaModel;
     }
 
     public String getCrm() {
@@ -64,13 +61,9 @@ public class MedicoModel extends IdAtivoAbstract{
         this.especialidade_id = especialidade_id;
     }
 
-    public EnderecoModel getEndereco_id() {
-        return endereco_id;
-    }
+    
 
-    public void setEndereco_id(EnderecoModel endereco_id) {
-        this.endereco_id = endereco_id;
-    }
+    
     
     
     

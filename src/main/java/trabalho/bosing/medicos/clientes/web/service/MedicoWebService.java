@@ -17,7 +17,7 @@ public class MedicoWebService implements IMedicoInterface{
     public MedicoModel insert(MedicoModel mm) throws SQLException, ValidacaoException {
 
         return ms.insert(mm);
-
+        
     }
 
     @Override
