@@ -60,7 +60,8 @@ public class EspecialidadeService {
         }
 
         try {
-            return epr.update(epm);
+            epr.update(epm);
+            return epm;
         } catch (Exception ex) {
             throw new ValidacaoException(erroInterno);
         }
@@ -77,7 +78,8 @@ public class EspecialidadeService {
         }
 
         try {
-            return epr.desativated(epm);
+            epr.desativated(epm);
+            return epm;
         } catch (Exception ex) {
             throw new ValidacaoException(erroInterno);
         }
