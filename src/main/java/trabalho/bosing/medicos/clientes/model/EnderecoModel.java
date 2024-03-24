@@ -1,6 +1,6 @@
 package trabalho.bosing.medicos.clientes.model;
 
-import trabalho.bosing.medicos.clientes.abastract.IdAtivoAbstract;
+import trabalho.bosing.medicos.clientes.abstracts.IdAtivoAbstract;
 
 public class EnderecoModel extends IdAtivoAbstract{
     

@@ -12,40 +12,40 @@ import trabalho.bosing.medicos.clientes.service.PessoaService;
 @WebService (endpointInterface = "trabalho.bosing.medicos.clientes.interfaces.IPessoaInterface")
 public class PessoaWebService implements IPessoaInterface{
 
-    PessoaService ps = new PessoaService();
+    PessoaService pesss = new PessoaService();
     
     @Override
     public PessoaModel insert(PessoaModel pessm) throws SQLException, ValidacaoException {
 
-        return ps.insert(pessm);
+        return pesss.insert(pessm);
 
     }
 
     @Override
     public ArrayList<PessoaModel> selectAll() throws SQLException, ValidacaoException {
 
-        return ps.selectAll();
+        return pesss.selectAll();
 
     }
 
     @Override
     public PessoaModel selectById(int id) throws SQLException, ValidacaoException {
 
-        return ps.selectById(id);
+        return pesss.selectById(id);
 
     }
 
     @Override
     public PessoaModel update(PessoaModel pessm) throws SQLException, ValidacaoException {
 
-        return ps.update(pessm);
+        return pesss.update(pessm);
 
     }
 
     @Override
     public PessoaModel desativated(PessoaModel pessm) throws SQLException, ValidacaoException {
 
-        return ps.desativated(pessm);
+        return pesss.desativated(pessm);
         
     }
     

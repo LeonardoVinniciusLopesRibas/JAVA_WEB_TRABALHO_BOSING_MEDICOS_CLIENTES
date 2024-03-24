@@ -1,4 +1,4 @@
-package trabalho.bosing.medicos.clientes.abastract;
+package trabalho.bosing.medicos.clientes.abstracts;
 
 public abstract class IdAtivoAbstract {
     

@@ -5,7 +5,6 @@ import jakarta.jws.WebService;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import trabalho.bosing.medicos.clientes.exception.ValidacaoException;
-import trabalho.bosing.medicos.clientes.model.PaisModel;
 import trabalho.bosing.medicos.clientes.model.PessoaModel;
 
 @WebService
