@@ -11,18 +11,18 @@ import trabalho.bosing.medicos.clientes.model.PaisModel;
 public interface IPaisInterface {
     
     @WebMethod
-    PaisModel insert (PaisModel paism) throws SQLException, ValidacaoException;
+    PaisModel insertPais (PaisModel paism) throws SQLException, ValidacaoException;
     
     @WebMethod
-    ArrayList<PaisModel> selectAll() throws SQLException, ValidacaoException;
+    ArrayList<PaisModel> selectAllPais() throws SQLException, ValidacaoException;
     
     @WebMethod
-    PaisModel selectById(int id) throws SQLException, ValidacaoException;
+    PaisModel selectByIdPais(int id) throws SQLException, ValidacaoException;
     
     @WebMethod
-    PaisModel update(PaisModel paism) throws SQLException, ValidacaoException;
+    PaisModel updatePais(PaisModel paism) throws SQLException, ValidacaoException;
     
     @WebMethod 
-    PaisModel desativated(PaisModel paism) throws SQLException, ValidacaoException;
+    PaisModel desativatedPais(PaisModel paism) throws SQLException, ValidacaoException;
     
 }

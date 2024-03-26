@@ -14,35 +14,35 @@ public class EnderecoWebService implements IEnderecoInterface{
     EnderecoService es = new EnderecoService();
 
     @Override
-    public EnderecoModel insert(EnderecoModel em) throws SQLException, ValidacaoException {
+    public EnderecoModel insertEndereco(EnderecoModel em) throws SQLException, ValidacaoException {
 
         return es.insert(em);
 
     }
 
     @Override
-    public ArrayList<EnderecoModel> selectAll() throws SQLException, ValidacaoException {
+    public ArrayList<EnderecoModel> selectAllEndereco() throws SQLException, ValidacaoException {
 
         return es.selectAll();
         
     }
 
     @Override
-    public EnderecoModel selectById(int id) throws SQLException, ValidacaoException {
+    public EnderecoModel selectByIdEndereco(int id) throws SQLException, ValidacaoException {
 
         return es.selectById(id);
         
     }
 
     @Override
-    public EnderecoModel update(EnderecoModel em) throws SQLException, ValidacaoException {
+    public EnderecoModel updateEndereco(EnderecoModel em) throws SQLException, ValidacaoException {
 
         return es.update(em);
 
     }
 
     @Override
-    public EnderecoModel desativated(EnderecoModel em) throws SQLException, ValidacaoException {
+    public EnderecoModel desativatedEndereco(EnderecoModel em) throws SQLException, ValidacaoException {
 
         return es.desativated(em);
 

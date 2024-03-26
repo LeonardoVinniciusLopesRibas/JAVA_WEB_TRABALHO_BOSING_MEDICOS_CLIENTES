@@ -17,7 +17,6 @@ public class MedicoRepository {
     private ResultSet rs = null;
     
     public MedicoModel insert(MedicoModel mm) throws SQLException, ValidacaoException{
-
         query = "INSERT INTO medico (crm, ativo, especialidade_id, pessoa_id) VALUES (?, ?, ?, ?)";
         try{
             conn = new ConnectionFactory().getConnection();
@@ -26,10 +25,8 @@ public class MedicoRepository {
             pstmt.setBoolean(2, true);
             pstmt.setInt(3, mm.getEspecialidade_id().getId());
             pstmt.setInt(4, mm.getPessoaModel().getId());
-            
             pstmt.executeUpdate();
         }finally {
-
             if (rs != null) {
                 rs.close();
             }
@@ -41,7 +38,6 @@ public class MedicoRepository {
             }
         }
         return mm;
-
     }
 
     public ArrayList<MedicoModel> selectAll() throws SQLException, ValidacaoException{
@@ -82,7 +78,7 @@ public class MedicoRepository {
     public MedicoModel selectById(int id) throws SQLException, ValidacaoException{
 
         MedicoModel medicoModel = null;
-        query = "SELECT id, crm, ativo, especialidade_id, pessoa_id WHERE id = ?";
+        query = "SELECT id, crm, ativo, especialidade_id, pessoa_id FROM medico WHERE id = ?";
         
         try{
             conn = new ConnectionFactory().getConnection();

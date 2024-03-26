@@ -14,35 +14,35 @@ public class MedicoWebService implements IMedicoInterface{
     MedicoService ms = new MedicoService();
     
     @Override
-    public MedicoModel insert(MedicoModel mm) throws SQLException, ValidacaoException {
+    public MedicoModel insertMedico(MedicoModel mm) throws SQLException, ValidacaoException {
 
         return ms.insert(mm);
         
     }
 
     @Override
-    public ArrayList<MedicoModel> selectAll() throws SQLException, ValidacaoException {
+    public ArrayList<MedicoModel> selectAllMedico() throws SQLException, ValidacaoException {
 
         return ms.selectAll();
 
     }
 
     @Override
-    public MedicoModel selectById(int id) throws SQLException, ValidacaoException {
+    public MedicoModel selectByIdMedico(int id) throws SQLException, ValidacaoException {
 
         return ms.selectById(id);
 
     }
 
     @Override
-    public MedicoModel update(MedicoModel mm) throws SQLException, ValidacaoException {
+    public MedicoModel updateMedico(MedicoModel mm) throws SQLException, ValidacaoException {
 
         return ms.update(mm);
 
     }
 
     @Override
-    public MedicoModel desativated(MedicoModel mm) throws SQLException, ValidacaoException {
+    public MedicoModel desativatedMedico(MedicoModel mm) throws SQLException, ValidacaoException {
 
         return ms.desativated(mm);
 

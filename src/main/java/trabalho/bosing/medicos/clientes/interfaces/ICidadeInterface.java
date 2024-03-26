@@ -11,19 +11,19 @@ import trabalho.bosing.medicos.clientes.model.CidadeModel;
 public interface ICidadeInterface {
 
     @WebMethod
-    CidadeModel insert (CidadeModel cm) throws SQLException, ValidacaoException;
+    CidadeModel insertCidade (CidadeModel cm) throws SQLException, ValidacaoException;
     
     @WebMethod
-    ArrayList<CidadeModel> selectAll() throws SQLException, ValidacaoException;
+    ArrayList<CidadeModel> selectAllCidade() throws SQLException, ValidacaoException;
     
     @WebMethod
-    CidadeModel selectById(int id) throws SQLException, ValidacaoException;
+    CidadeModel selectByIdCidade(int id) throws SQLException, ValidacaoException;
     
     @WebMethod
-    CidadeModel update(CidadeModel cm) throws SQLException, ValidacaoException;
+    CidadeModel updateCidade(CidadeModel cm) throws SQLException, ValidacaoException;
     
     @WebMethod 
-    CidadeModel desativated(CidadeModel cm) throws SQLException, ValidacaoException;
+    CidadeModel desativatedCidade(CidadeModel cm) throws SQLException, ValidacaoException;
     
 
 }

@@ -15,35 +15,35 @@ public class PessoaWebService implements IPessoaInterface{
     PessoaService pesss = new PessoaService();
     
     @Override
-    public PessoaModel insert(PessoaModel pessm) throws SQLException, ValidacaoException {
+    public PessoaModel insertPessoa(PessoaModel pessm) throws SQLException, ValidacaoException {
 
         return pesss.insert(pessm);
 
     }
 
     @Override
-    public ArrayList<PessoaModel> selectAll() throws SQLException, ValidacaoException {
+    public ArrayList<PessoaModel> selectAllPessoa() throws SQLException, ValidacaoException {
 
         return pesss.selectAll();
 
     }
 
     @Override
-    public PessoaModel selectById(int id) throws SQLException, ValidacaoException {
+    public PessoaModel selectByIdPessoa(int id) throws SQLException, ValidacaoException {
 
         return pesss.selectById(id);
 
     }
 
     @Override
-    public PessoaModel update(PessoaModel pessm) throws SQLException, ValidacaoException {
+    public PessoaModel updatePessoa(PessoaModel pessm) throws SQLException, ValidacaoException {
 
         return pesss.update(pessm);
 
     }
 
     @Override
-    public PessoaModel desativated(PessoaModel pessm) throws SQLException, ValidacaoException {
+    public PessoaModel desativatedPessoa(PessoaModel pessm) throws SQLException, ValidacaoException {
 
         return pesss.desativated(pessm);
         

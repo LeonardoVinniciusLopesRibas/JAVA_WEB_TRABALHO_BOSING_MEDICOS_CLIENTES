@@ -11,18 +11,18 @@ import trabalho.bosing.medicos.clientes.model.PacienteModel;
 public interface IPacienteInterface {
     
     @WebMethod
-    PacienteModel insert (PacienteModel pm) throws SQLException, ValidacaoException;
+    PacienteModel insertPaciente (PacienteModel pm) throws SQLException, ValidacaoException;
     
     @WebMethod
-    ArrayList<PacienteModel> selectAll() throws SQLException, ValidacaoException;
+    ArrayList<PacienteModel> selectAllPaciente() throws SQLException, ValidacaoException;
     
     @WebMethod
-    PacienteModel selectById(int id) throws SQLException, ValidacaoException;
+    PacienteModel selectByIdPaciente(int id) throws SQLException, ValidacaoException;
     
     @WebMethod
-    PacienteModel update(PacienteModel pm) throws SQLException, ValidacaoException;
+    PacienteModel updatePaciente(PacienteModel pm) throws SQLException, ValidacaoException;
     
     @WebMethod 
-    PacienteModel desativated(PacienteModel pm) throws SQLException, ValidacaoException;
+    PacienteModel desativatedPaciente(PacienteModel pm) throws SQLException, ValidacaoException;
     
 }

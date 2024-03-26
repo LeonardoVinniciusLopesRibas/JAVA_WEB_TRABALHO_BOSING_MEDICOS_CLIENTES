@@ -14,35 +14,35 @@ public class PaisWebService implements IPaisInterface{
     PaisService paiss = new PaisService();
     
     @Override
-    public PaisModel insert(PaisModel paism) throws SQLException, ValidacaoException {
+    public PaisModel insertPais(PaisModel paism) throws SQLException, ValidacaoException {
 
         return paiss.insert(paism);
 
     }
 
     @Override
-    public ArrayList<PaisModel> selectAll() throws SQLException, ValidacaoException {
+    public ArrayList<PaisModel> selectAllPais() throws SQLException, ValidacaoException {
 
         return paiss.selectAll();
 
     }
 
     @Override
-    public PaisModel selectById(int id) throws SQLException, ValidacaoException {
+    public PaisModel selectByIdPais(int id) throws SQLException, ValidacaoException {
 
         return paiss.selectById(id);
 
     }
 
     @Override
-    public PaisModel update(PaisModel paism) throws SQLException, ValidacaoException {
+    public PaisModel updatePais(PaisModel paism) throws SQLException, ValidacaoException {
 
         return paiss.update(paism);
 
     }
 
     @Override
-    public PaisModel desativated(PaisModel paism) throws SQLException, ValidacaoException {
+    public PaisModel desativatedPais(PaisModel paism) throws SQLException, ValidacaoException {
 
         return paiss.desativated(paism);
         

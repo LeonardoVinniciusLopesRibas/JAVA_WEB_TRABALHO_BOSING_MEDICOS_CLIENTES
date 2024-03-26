@@ -14,35 +14,35 @@ public class EstadoWebService implements IEstadoInterface{
     EstadoService ests = new EstadoService();
     
     @Override
-    public EstadoModel insert(EstadoModel estm) throws SQLException, ValidacaoException {
+    public EstadoModel insertEstado(EstadoModel estm) throws SQLException, ValidacaoException {
 
         return ests.insert(estm);
         
     }
 
     @Override
-    public ArrayList<EstadoModel> selectAll() throws SQLException, ValidacaoException {
+    public ArrayList<EstadoModel> selectAllEstado() throws SQLException, ValidacaoException {
 
         return ests.selectAll();
 
     }
 
     @Override
-    public EstadoModel selectById(int id) throws SQLException, ValidacaoException {
+    public EstadoModel selectByIdEstado(int id) throws SQLException, ValidacaoException {
 
         return ests.selectById(id);
 
     }
 
     @Override
-    public EstadoModel update(EstadoModel estm) throws SQLException, ValidacaoException {
+    public EstadoModel updateEstado(EstadoModel estm) throws SQLException, ValidacaoException {
 
         return ests.update(estm);
 
     }
 
     @Override
-    public EstadoModel desativated(EstadoModel estm) throws SQLException, ValidacaoException {
+    public EstadoModel desativatedEstado(EstadoModel estm) throws SQLException, ValidacaoException {
 
         return ests.desativated(estm);
         

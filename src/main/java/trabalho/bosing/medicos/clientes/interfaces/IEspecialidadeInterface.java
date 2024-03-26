@@ -11,18 +11,18 @@ import trabalho.bosing.medicos.clientes.model.EspecialidadeModel;
 public interface IEspecialidadeInterface {
     
     @WebMethod
-    EspecialidadeModel insert (EspecialidadeModel epm) throws SQLException, ValidacaoException;
+    EspecialidadeModel insertEspecialidade (EspecialidadeModel epm) throws SQLException, ValidacaoException;
     
     @WebMethod
-    ArrayList<EspecialidadeModel> selectAll() throws SQLException, ValidacaoException;
+    ArrayList<EspecialidadeModel> selectAllEspecialidade() throws SQLException, ValidacaoException;
     
     @WebMethod
-    EspecialidadeModel selectById(int id) throws SQLException, ValidacaoException;
+    EspecialidadeModel selectByIdEspecialidade(int id) throws SQLException, ValidacaoException;
     
     @WebMethod
-    EspecialidadeModel update(EspecialidadeModel epm) throws SQLException, ValidacaoException;
+    EspecialidadeModel updateEspecialidade(EspecialidadeModel epm) throws SQLException, ValidacaoException;
     
     @WebMethod 
-    EspecialidadeModel desativated(EspecialidadeModel epm) throws SQLException, ValidacaoException;
+    EspecialidadeModel desativatedEspecialidade(EspecialidadeModel epm) throws SQLException, ValidacaoException;
     
 }

@@ -11,18 +11,18 @@ import trabalho.bosing.medicos.clientes.model.EnderecoModel;
 public interface IEnderecoInterface {
     
     @WebMethod
-    EnderecoModel insert (EnderecoModel em) throws SQLException, ValidacaoException;
+    EnderecoModel insertEndereco (EnderecoModel em) throws SQLException, ValidacaoException;
     
     @WebMethod
-    ArrayList<EnderecoModel> selectAll() throws SQLException, ValidacaoException;
+    ArrayList<EnderecoModel> selectAllEndereco() throws SQLException, ValidacaoException;
     
     @WebMethod
-    EnderecoModel selectById(int id) throws SQLException, ValidacaoException;
+    EnderecoModel selectByIdEndereco(int id) throws SQLException, ValidacaoException;
     
     @WebMethod
-    EnderecoModel update(EnderecoModel em) throws SQLException, ValidacaoException;
+    EnderecoModel updateEndereco(EnderecoModel em) throws SQLException, ValidacaoException;
     
     @WebMethod 
-    EnderecoModel desativated(EnderecoModel em) throws SQLException, ValidacaoException;
+    EnderecoModel desativatedEndereco(EnderecoModel em) throws SQLException, ValidacaoException;
     
 }

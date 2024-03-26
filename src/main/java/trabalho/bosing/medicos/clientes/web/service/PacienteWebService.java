@@ -14,35 +14,35 @@ public class PacienteWebService implements IPacienteInterface{
     PacienteService ps = new PacienteService();
     
     @Override
-    public PacienteModel insert(PacienteModel pm) throws SQLException, ValidacaoException {
+    public PacienteModel insertPaciente(PacienteModel pm) throws SQLException, ValidacaoException {
 
         return ps.insert(pm);
 
     }
 
     @Override
-    public ArrayList<PacienteModel> selectAll() throws SQLException, ValidacaoException {
+    public ArrayList<PacienteModel> selectAllPaciente() throws SQLException, ValidacaoException {
 
         return ps.selectAll();
 
     }
 
     @Override
-    public PacienteModel selectById(int id) throws SQLException, ValidacaoException {
+    public PacienteModel selectByIdPaciente(int id) throws SQLException, ValidacaoException {
 
         return ps.selectById(id);
 
     }
 
     @Override
-    public PacienteModel update(PacienteModel pm) throws SQLException, ValidacaoException {
+    public PacienteModel updatePaciente(PacienteModel pm) throws SQLException, ValidacaoException {
 
         return ps.update(pm);
         
     }
 
     @Override
-    public PacienteModel desativated(PacienteModel pm) throws SQLException, ValidacaoException {
+    public PacienteModel desativatedPaciente(PacienteModel pm) throws SQLException, ValidacaoException {
 
         return ps.desativated(pm);
         

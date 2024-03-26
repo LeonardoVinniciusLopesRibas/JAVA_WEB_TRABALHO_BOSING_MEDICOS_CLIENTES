@@ -15,35 +15,35 @@ public class CidadeWebService implements ICidadeInterface{
 
     
     @Override
-    public CidadeModel insert(CidadeModel cm) throws SQLException, ValidacaoException {
+    public CidadeModel insertCidade(CidadeModel cm) throws SQLException, ValidacaoException {
 
         return cs.insert(cm);
         
     }
 
     @Override
-    public ArrayList<CidadeModel> selectAll() throws SQLException, ValidacaoException {
+    public ArrayList<CidadeModel> selectAllCidade() throws SQLException, ValidacaoException {
 
         return cs.selectAll();
         
     }
 
     @Override
-    public CidadeModel selectById(int id) throws SQLException, ValidacaoException {
+    public CidadeModel selectByIdCidade(int id) throws SQLException, ValidacaoException {
 
         return cs.selectById(id);
         
     }
 
     @Override
-    public CidadeModel update(CidadeModel cm) throws SQLException, ValidacaoException {
+    public CidadeModel updateCidade(CidadeModel cm) throws SQLException, ValidacaoException {
         
         return cs.update(cm);
         
     }
 
     @Override
-    public CidadeModel desativated(CidadeModel cm) throws SQLException, ValidacaoException {
+    public CidadeModel desativatedCidade(CidadeModel cm) throws SQLException, ValidacaoException {
 
         return cs.desativated(cm);
 

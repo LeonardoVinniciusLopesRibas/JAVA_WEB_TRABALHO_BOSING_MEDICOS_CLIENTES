@@ -14,35 +14,35 @@ public class EspecialidadeWebService implements IEspecialidadeInterface{
     EspecialidadeService eps = new EspecialidadeService();
     
     @Override
-    public EspecialidadeModel insert(EspecialidadeModel epm) throws SQLException, ValidacaoException {
+    public EspecialidadeModel insertEspecialidade(EspecialidadeModel epm) throws SQLException, ValidacaoException {
 
         return eps.insert(epm);
         
     }
 
     @Override
-    public ArrayList<EspecialidadeModel> selectAll() throws SQLException, ValidacaoException {
+    public ArrayList<EspecialidadeModel> selectAllEspecialidade() throws SQLException, ValidacaoException {
 
         return eps.selectAll();
 
     }
 
     @Override
-    public EspecialidadeModel selectById(int id) throws SQLException, ValidacaoException {
+    public EspecialidadeModel selectByIdEspecialidade(int id) throws SQLException, ValidacaoException {
 
         return eps.selectById(id);
         
     }
 
     @Override
-    public EspecialidadeModel update(EspecialidadeModel epm) throws SQLException, ValidacaoException {
+    public EspecialidadeModel updateEspecialidade(EspecialidadeModel epm) throws SQLException, ValidacaoException {
 
         return eps.update(epm);
         
     }
 
     @Override
-    public EspecialidadeModel desativated(EspecialidadeModel epm) throws SQLException, ValidacaoException {
+    public EspecialidadeModel desativatedEspecialidade(EspecialidadeModel epm) throws SQLException, ValidacaoException {
 
         return eps.desativated(epm);
 

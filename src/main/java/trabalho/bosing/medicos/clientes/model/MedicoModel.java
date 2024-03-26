@@ -1,6 +1,5 @@
 package trabalho.bosing.medicos.clientes.model;
 
-
 public class MedicoModel{
     
     private int id;
