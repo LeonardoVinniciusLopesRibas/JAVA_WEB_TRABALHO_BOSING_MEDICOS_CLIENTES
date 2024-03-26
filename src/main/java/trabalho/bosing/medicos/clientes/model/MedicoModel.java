@@ -1,9 +1,9 @@
 package trabalho.bosing.medicos.clientes.model;
 
-public class MedicoModel{
+import trabalho.bosing.medicos.clientes.abstracts.IdAtivoAbstract;
+
+public class MedicoModel extends IdAtivoAbstract{
     
-    private int id;
-    private boolean ativo;
     private PessoaModel pessoaModel;    
     private String crm;
     private EspecialidadeModel especialidade_id;
@@ -12,28 +12,11 @@ public class MedicoModel{
     public MedicoModel() {
     }
 
-    public MedicoModel(int id, boolean ativo, PessoaModel pessoaModel, String crm, EspecialidadeModel especialidade_id) {
-        this.id = id;
-        this.ativo = ativo;
+    public MedicoModel(PessoaModel pessoaModel, String crm, EspecialidadeModel especialidade_id, int id, boolean ativo) {
+        super(id, ativo);
         this.pessoaModel = pessoaModel;
         this.crm = crm;
         this.especialidade_id = especialidade_id;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public boolean isAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
     }
 
     public PessoaModel getPessoaModel() {
@@ -59,6 +42,9 @@ public class MedicoModel{
     public void setEspecialidade_id(EspecialidadeModel especialidade_id) {
         this.especialidade_id = especialidade_id;
     }
+
+    
+    
 
     
 

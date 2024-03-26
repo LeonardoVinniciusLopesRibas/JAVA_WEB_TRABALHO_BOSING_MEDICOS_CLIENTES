@@ -1,35 +1,20 @@
 package trabalho.bosing.medicos.clientes.model;
 
+import trabalho.bosing.medicos.clientes.abstracts.IdAtivoAbstract;
 
-public class PacienteModel{
+
+public class PacienteModel extends IdAtivoAbstract{
     
-    private int id;
-    private boolean ativo;
+
     private PessoaModel pessoaModel;
 
     public PacienteModel() {
     }
 
-    public PacienteModel(int id, boolean ativo, PessoaModel pessoaModel) {
-        this.id = id;
-        this.ativo = ativo;
+
+    public PacienteModel(PessoaModel pessoaModel, int id, boolean ativo) {
+        super(id, ativo);
         this.pessoaModel = pessoaModel;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public boolean isAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
     }
 
     public PessoaModel getPessoaModel() {
@@ -40,10 +25,6 @@ public class PacienteModel{
         this.pessoaModel = pessoaModel;
     }
 
-    
-    
-    
-    
     
     
 }
