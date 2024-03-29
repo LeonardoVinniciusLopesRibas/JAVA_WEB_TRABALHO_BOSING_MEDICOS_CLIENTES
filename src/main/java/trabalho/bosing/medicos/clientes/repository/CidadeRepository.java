@@ -21,7 +21,6 @@ public class CidadeRepository {
 
         try {
             conn = new ConnectionFactory().getConnection();
-
             pstmt = conn.prepareStatement(query);
             pstmt.setString(1, cm.getNome());
             pstmt.setBoolean(2, true);
@@ -90,6 +89,7 @@ public class CidadeRepository {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
+                cidadeModel = new CidadeModel();
                 cidadeModel.setId(rs.getInt("id"));
                 cidadeModel.setNome(rs.getString("nome"));
                 cidadeModel.setAtivo(rs.getBoolean("ativo"));

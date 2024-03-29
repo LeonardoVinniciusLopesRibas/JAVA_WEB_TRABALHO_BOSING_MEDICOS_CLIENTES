@@ -52,11 +52,8 @@ public class EspecialidadeService {
 
     public EspecialidadeModel update(EspecialidadeModel epm) throws ValidacaoException {
 
-        if (epm.getDescricao().length() <= 3) {
-            throw new ValidacaoException("Descricao não foi preenchido");
-        }
-        if (epm.getDescricao().length() >= 30) {
-            throw new ValidacaoException("Descricao tem limite de 30 caracteres");
+        if (epm.getId() <1) {
+            throw new ValidacaoException("Id preenchido de maneira incorreta");
         }
 
         try {
@@ -70,11 +67,8 @@ public class EspecialidadeService {
 
     public EspecialidadeModel desativated(EspecialidadeModel epm) throws ValidacaoException {
 
-        if (epm.getDescricao().length() <= 3) {
-            throw new ValidacaoException("Descricao não foi preenchido");
-        }
-        if (epm.getDescricao().length() >= 30) {
-            throw new ValidacaoException("Descricao tem limite de 30 caracteres");
+        if (epm.getId() <1) {
+            throw new ValidacaoException("Id preenchido de maneira incorreta");
         }
 
         try {

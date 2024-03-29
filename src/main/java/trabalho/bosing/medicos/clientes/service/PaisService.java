@@ -15,7 +15,7 @@ public class PaisService {
         if (paism.getNome().length() <= 3) {
             throw new ValidacaoException("Nome não foi preenchido");
         }
-        if (paism.getNome().length() > 30) {
+        if (paism.getNome().length() > 100) {
             throw new ValidacaoException("Nome tem limite de 30 caracteres");
         }
         try {
@@ -51,11 +51,8 @@ public class PaisService {
 
     public PaisModel update(PaisModel paism) throws ValidacaoException {
 
-        if (paism.getNome().length() <= 3) {
-            throw new ValidacaoException("Nome não foi preenchido");
-        }
-        if (paism.getNome().length() > 30) {
-            throw new ValidacaoException("Nome tem limite de 30 caracteres");
+        if (paism.getId() <1) {
+            throw new ValidacaoException("Id preenchido de maneira incorreta");
         }
 
         try {
@@ -69,13 +66,9 @@ public class PaisService {
 
     public PaisModel desativated(PaisModel paism) throws ValidacaoException {
 
-        if (paism.getNome().length() <= 3) {
-            throw new ValidacaoException("Nome não foi preenchido");
+        if (paism.getId() <1) {
+            throw new ValidacaoException("Id preenchido de maneira incorreta");
         }
-        if (paism.getNome().length() > 30) {
-            throw new ValidacaoException("Nome tem limite de 30 caracteres");
-        }
-
         try {
             paisr.desativated(paism);
             return paism;

@@ -21,7 +21,6 @@ public class EspecialidadeRepository {
         query = "INSERT INTO especialidade (descricao, ativo) VALUES (?, ?)";
         try{
             conn = new ConnectionFactory().getConnection();
-            
             pstmt = conn.prepareStatement(query);
             pstmt.setString(1, epm.getDescricao());
             pstmt.setBoolean(2, true);
@@ -84,6 +83,7 @@ public class EspecialidadeRepository {
             rs = pstmt.executeQuery();
             
             while(rs.next()){
+                especialidadeModel = new EspecialidadeModel();
                 especialidadeModel.setId(rs.getInt("id"));
                 especialidadeModel.setDescricao(rs.getString("descricao"));
                 especialidadeModel.setAtivo(rs.getBoolean("ativo"));

@@ -86,6 +86,7 @@ public class PacienteRepository {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
+                pacienteModel = new PacienteModel();
                 pacienteModel.setId(rs.getInt("id"));
                 pacienteModel.setAtivo(rs.getBoolean("ativo"));
                 pacienteModel.setPessoaModel(new PessoaRepository().selectById(rs.getInt("pessoa_id")));

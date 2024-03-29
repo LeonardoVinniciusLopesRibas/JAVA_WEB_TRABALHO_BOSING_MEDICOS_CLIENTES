@@ -60,20 +60,8 @@ public class EstadoService {
 
     public EstadoModel update(EstadoModel estm) throws ValidacaoException {
 
-        if (estm.getNome().length() <= 3) {
-            throw new ValidacaoException("Nome não foi preenchido");
-        }
-        if (estm.getNome().length() >= 25) {
-            throw new ValidacaoException("Nome tem limite de 25 caracteres");
-        }
-        if (estm.getUf().length() <= 1) {
-            throw new ValidacaoException("Uf não foi preenchido");
-        }
-        if (estm.getUf().length() >= 5) {
-            throw new ValidacaoException("Uf tem limite de 5 caracteres");
-        }
-        if (estm.getPais_id() == null) {
-            throw new ValidacaoException("Pais não foi preenchido");
+        if (estm.getId() <1) {
+            throw new ValidacaoException("Id preenchido de maneira incorreta");
         }
 
         try {
@@ -87,20 +75,8 @@ public class EstadoService {
 
     public EstadoModel desativated(EstadoModel estm) throws ValidacaoException {
 
-        if (estm.getNome().length() <= 3) {
-            throw new ValidacaoException("Nome não foi preenchido");
-        }
-        if (estm.getNome().length() >= 25) {
-            throw new ValidacaoException("Nome tem limite de 25 caracteres");
-        }
-        if (estm.getUf().length() <= 1) {
-            throw new ValidacaoException("Uf não foi preenchido");
-        }
-        if (estm.getUf().length() >= 5) {
-            throw new ValidacaoException("Uf tem limite de 5 caracteres");
-        }
-        if (estm.getPais_id() == null) {
-            throw new ValidacaoException("Pais não foi preenchido");
+        if (estm.getId() <1) {
+            throw new ValidacaoException("Id preenchido de maneira incorreta");
         }
 
         try {

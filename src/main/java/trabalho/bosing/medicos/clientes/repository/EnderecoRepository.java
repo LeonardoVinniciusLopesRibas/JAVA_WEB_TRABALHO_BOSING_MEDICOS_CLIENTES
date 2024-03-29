@@ -21,7 +21,6 @@ public class EnderecoRepository {
         query = "INSERT INTO endereco (cep, logradouro, numero, complemento, bairro, ativo, cidade_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
             conn = new ConnectionFactory().getConnection();
-
             pstmt = conn.prepareStatement(query);
             pstmt.setString(1, em.getCep());
             pstmt.setString(2, em.getLogradouro());
@@ -30,6 +29,7 @@ public class EnderecoRepository {
             pstmt.setString(5, em.getBairro());
             pstmt.setBoolean(6, true);
             pstmt.setInt(7, em.getCidade_id().getId());
+            pstmt.executeUpdate();
         } finally {
 
             if (rs != null) {
@@ -48,7 +48,7 @@ public class EnderecoRepository {
     public ArrayList<EnderecoModel> selectAll() throws SQLException, ValidacaoException {
 
         ArrayList<EnderecoModel> endereco = new ArrayList<>();
-        query = "SELECT id, cep, logradouro, numero, complemento, bairro, ativo, cidade_id WHERE ativo = true";
+        query = "SELECT id, cep, logradouro, numero, complemento, bairro, ativo, cidade_id FROM endereco WHERE ativo = true";
 
         try {
             conn = new ConnectionFactory().getConnection();
@@ -85,7 +85,7 @@ public class EnderecoRepository {
     public EnderecoModel selectById(int id) throws SQLException, ValidacaoException {
 
         EnderecoModel enderecoModel = null;
-        query = "SELECT id, cep, logradouro, numero, complemento, bairro, ativo, cidade_id WHERE id = ?";
+        query = "SELECT id, cep, logradouro, numero, complemento, bairro, ativo, cidade_id FROM endereco WHERE id = ?";
         try {
             conn = new ConnectionFactory().getConnection();
             pstmt = conn.prepareStatement(query);
@@ -93,6 +93,7 @@ public class EnderecoRepository {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
+                enderecoModel = new EnderecoModel();
                 enderecoModel.setId(rs.getInt("id"));
                 enderecoModel.setCep(rs.getString("cep"));
                 enderecoModel.setLogradouro(rs.getString("logradouro"));
@@ -130,8 +131,9 @@ public class EnderecoRepository {
             pstmt.setString(4, em.getComplemento());
             pstmt.setString(5, em.getBairro());
             pstmt.setInt(6, em.getCidade_id().getId());
+            pstmt.setInt(7, em.getId());
 
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
 
         } finally {
             if (pstmt != null) {

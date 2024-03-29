@@ -49,8 +49,8 @@ public class PacienteService {
 
     public PacienteModel update(PacienteModel pm) throws ValidacaoException {
 
-        if (pm.getPessoaModel() == null) {
-            throw new ValidacaoException("Pessoa não foi preenchida");
+        if (pm.getId() <1) {
+            throw new ValidacaoException("Id preenchido de maneira incorreta");
         }
 
         try {
@@ -64,8 +64,8 @@ public class PacienteService {
 
     public PacienteModel desativated(PacienteModel pm) throws ValidacaoException {
 
-        if (pm.getPessoaModel() == null) {
-            throw new ValidacaoException("Pessoa não foi preenchida");
+        if (pm.getId() <1) {
+            throw new ValidacaoException("Id preenchido de maneira incorreta");
         }
 
         try {

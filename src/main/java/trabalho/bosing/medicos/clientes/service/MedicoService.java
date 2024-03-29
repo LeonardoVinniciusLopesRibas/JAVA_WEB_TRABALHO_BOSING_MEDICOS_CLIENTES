@@ -56,17 +56,8 @@ public class MedicoService {
 
     public MedicoModel update(MedicoModel mm) throws ValidacaoException {
 
-        if (mm.getCrm().length() <= 3) {
-            throw new ValidacaoException("Crm não foi preenchido");
-        }
-        if (mm.getCrm().length() > 6) {
-            throw new ValidacaoException("Crm tem limite de 6 caracteres");
-        }
-        if (mm.getPessoaModel() == null) {
-            throw new ValidacaoException("Pessoa não foi preenchida");
-        }
-        if (mm.getEspecialidade_id() == null) {
-            throw new ValidacaoException("Especialidade não foi preenchida");
+        if (mm.getId() <1) {
+            throw new ValidacaoException("Id preenchido de maneira incorreta");
         }
         try {
             mr.update(mm);
@@ -79,17 +70,8 @@ public class MedicoService {
 
     public MedicoModel desativated(MedicoModel mm) throws ValidacaoException {
 
-        if (mm.getCrm().length() <= 3) {
-            throw new ValidacaoException("Crm não foi preenchido");
-        }
-        if (mm.getCrm().length() > 6) {
-            throw new ValidacaoException("Crm tem limite de 6 caracteres");
-        }
-        if (mm.getPessoaModel() == null) {
-            throw new ValidacaoException("Pessoa não foi preenchida");
-        }
-        if (mm.getEspecialidade_id() == null) {
-            throw new ValidacaoException("Especialidade não foi preenchida");
+        if (mm.getId() <1) {
+            throw new ValidacaoException("Id preenchido de maneira incorreta");
         }
         try {
             mr.desativated(mm);

@@ -74,29 +74,8 @@ public class EnderecoService {
 
     public EnderecoModel update(EnderecoModel em) throws ValidacaoException {
 
-        if (em.getLogradouro().length() <= 3) {
-            throw new ValidacaoException("Logradouro não foi preenchido");
-        }
-        if (em.getBairro().length() >= 20) {
-            throw new ValidacaoException("Bairro tem limite de 30 caracteres");
-        }
-        if (em.getComplemento().length() >= 50) {
-            throw new ValidacaoException("Complemento tem limite de 50 caracteres");
-        }
-        if (em.getNumero().length() > 10) {
-            throw new ValidacaoException("Número tem limite de 10 caracteres");
-        }
-        if (em.getCep().length() <= 3) {
-            throw new ValidacaoException("Cep não foi preenchido");
-        }
-        if (em.getCep().length() >= 9) {
-            throw new ValidacaoException("Cep tem limite de 8 caracteres");
-        }
-        if (em.getBairro().length() <= 3) {
-            throw new ValidacaoException("Bairro não foi preenchido");
-        }
-        if (em.getCidade_id() == null) {
-            throw new ValidacaoException("Cidade não foi preenchida");
+        if (em.getId() <1) {
+            throw new ValidacaoException("Id preenchido de maneira incorreta");
         }
 
         try {
@@ -110,29 +89,8 @@ public class EnderecoService {
 
     public EnderecoModel desativated(EnderecoModel em) throws ValidacaoException {
 
-        if (em.getLogradouro().length() <= 3) {
-            throw new ValidacaoException("Logradouro não foi preenchido");
-        }
-        if (em.getBairro().length() >= 20) {
-            throw new ValidacaoException("Bairro tem limite de 30 caracteres");
-        }
-        if (em.getComplemento().length() >= 50) {
-            throw new ValidacaoException("Complemento tem limite de 50 caracteres");
-        }
-        if (em.getNumero().length() > 10) {
-            throw new ValidacaoException("Número tem limite de 10 caracteres");
-        }
-        if (em.getCep().length() <= 3) {
-            throw new ValidacaoException("Cep não foi preenchido");
-        }
-        if (em.getCep().length() >= 9) {
-            throw new ValidacaoException("Cep tem limite de 8 caracteres");
-        }
-        if (em.getBairro().length() <= 3) {
-            throw new ValidacaoException("Bairro não foi preenchido");
-        }
-        if (em.getCidade_id() == null) {
-            throw new ValidacaoException("Cidade não foi preenchida");
+        if (em.getId() <1) {
+            throw new ValidacaoException("Id preenchido de maneira incorreta");
         }
 
         try {

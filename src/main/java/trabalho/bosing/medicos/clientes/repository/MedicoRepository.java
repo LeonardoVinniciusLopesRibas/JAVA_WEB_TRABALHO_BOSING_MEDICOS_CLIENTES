@@ -87,6 +87,7 @@ public class MedicoRepository {
             rs = pstmt.executeQuery();
             
             while(rs.next()){
+                medicoModel = new MedicoModel();
                 medicoModel.setId(rs.getInt("id"));
                 medicoModel.setCrm(rs.getString("crm"));
                 medicoModel.setAtivo(rs.getBoolean("ativo"));
@@ -118,6 +119,7 @@ public class MedicoRepository {
             pstmt.setString(1, mm.getCrm());
             pstmt.setInt(2, mm.getEspecialidade_id().getId());
             pstmt.setInt(3, mm.getPessoaModel().getId());
+            pstmt.setInt(4, mm.getId());
             
             pstmt.executeUpdate();
         } finally {

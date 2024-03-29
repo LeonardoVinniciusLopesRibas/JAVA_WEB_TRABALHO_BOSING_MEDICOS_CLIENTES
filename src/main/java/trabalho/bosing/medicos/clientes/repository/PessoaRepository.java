@@ -21,7 +21,6 @@ public class PessoaRepository {
         query = "INSERT INTO pessoa (nome, cpf, email, endereco_id, telefone, ativo) VALUES (?, ?, ?, ?, ? ,?)";
         try {
             conn = new ConnectionFactory().getConnection();
-
             pstmt = conn.prepareStatement(query);
             pstmt.setString(1, pessm.getNome());
             pstmt.setString(2, pessm.getCpf());
@@ -93,11 +92,14 @@ public class PessoaRepository {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
+                pessoaModel = new PessoaModel();
                 pessoaModel.setId(rs.getInt("id"));
                 pessoaModel.setNome(rs.getString("nome"));
                 pessoaModel.setCpf(rs.getString("cpf"));
                 pessoaModel.setEmail(rs.getString("email"));
-                pessoaModel.setEndereco_id(new EnderecoRepository().selectById(rs.getInt("id")));
+                pessoaModel.setEndereco_id(new EnderecoRepository().selectById(rs.getInt("endereco_id")));
+                pessoaModel.setTelefone(rs.getString("telefone"));
+                pessoaModel.setAtivo(rs.getBoolean("ativo"));
             }
         } finally {
             if (rs != null) {

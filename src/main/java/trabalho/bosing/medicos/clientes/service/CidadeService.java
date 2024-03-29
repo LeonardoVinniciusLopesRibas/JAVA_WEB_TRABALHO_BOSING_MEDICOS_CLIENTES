@@ -1,6 +1,5 @@
 package trabalho.bosing.medicos.clientes.service;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import trabalho.bosing.medicos.clientes.exception.ValidacaoException;
 import trabalho.bosing.medicos.clientes.model.CidadeModel;
@@ -55,14 +54,8 @@ public class CidadeService {
 
     public CidadeModel update(CidadeModel cm) throws ValidacaoException {
 
-        if (cm.getNome().length() <= 3) {
-            throw new ValidacaoException("Nome não foi preenchido");
-        }
-        if (cm.getNome().length() >= 30) {
-            throw new ValidacaoException("Cidade tem limite de 30 caracteres");
-        }
-        if (cm.getEstado_id() == null) {
-            throw new ValidacaoException("Estado não foi preenchido");
+        if (cm.getId() <1) {
+            throw new ValidacaoException("Id preenchido de maneira incorreta");
         }
         try {
             cr.update(cm);
@@ -74,14 +67,8 @@ public class CidadeService {
 
     public CidadeModel desativated(CidadeModel cm) throws ValidacaoException {
 
-        if (cm.getNome().length() <= 3) {
-            throw new ValidacaoException("Nome não foi preenchido");
-        }
-        if (cm.getNome().length() >= 30) {
-            throw new ValidacaoException("Cidade tem limite de 30 caracteres");
-        }
-        if (cm.getEstado_id() == null) {
-            throw new ValidacaoException("Estado não foi preenchido");
+        if (cm.getId() <1) {
+            throw new ValidacaoException("Id preenchido de maneira incorreta");
         }
 
         try {

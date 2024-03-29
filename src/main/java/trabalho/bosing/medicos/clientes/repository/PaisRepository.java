@@ -88,6 +88,7 @@ public class PaisRepository {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
+                paisModel = new PaisModel();
                 paisModel.setId(rs.getInt("id"));
                 paisModel.setNome(rs.getString("nome"));
                 paisModel.setAtivo(rs.getBoolean("ativo"));

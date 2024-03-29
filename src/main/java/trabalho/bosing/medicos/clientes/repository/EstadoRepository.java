@@ -91,6 +91,7 @@ public class EstadoRepository {
             rs = pstmt.executeQuery();
             
             while(rs.next()){
+                estadoModel = new EstadoModel();
                 estadoModel.setId(rs.getInt("id"));
                 estadoModel.setNome(rs.getString("nome"));
                 estadoModel.setUf(rs.getString("uf"));
