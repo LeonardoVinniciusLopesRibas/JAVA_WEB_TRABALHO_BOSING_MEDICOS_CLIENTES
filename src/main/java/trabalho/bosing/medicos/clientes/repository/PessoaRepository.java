@@ -118,16 +118,14 @@ public class PessoaRepository {
 
     public void update(PessoaModel pessm) throws SQLException, ValidacaoException {
 
-        query = "UPDATE pessoa SET nome = ?, cpf = ?, email = ?, endereco_id = ?, telefone = ? WHERE id = ?";
+        query = "UPDATE pessoa SET nome = ?, endereco_id = ?, telefone = ? WHERE id = ?";
         try {
             conn = new ConnectionFactory().getConnection();
             pstmt = conn.prepareStatement(query);
             pstmt.setString(1, pessm.getNome());
-            pstmt.setString(2, pessm.getCpf());
-            pstmt.setString(3, pessm.getEmail());
-            pstmt.setInt(4, pessm.getEndereco_id().getId());
-            pstmt.setString(5, pessm.getTelefone());
-            pstmt.setInt(6, pessm.getId());
+            pstmt.setInt(2, pessm.getEndereco_id().getId());
+            pstmt.setString(3, pessm.getTelefone());
+            pstmt.setInt(4, pessm.getId());
 
             pstmt.executeUpdate();
 

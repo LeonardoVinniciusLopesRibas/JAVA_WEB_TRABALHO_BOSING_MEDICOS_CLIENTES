@@ -111,15 +111,13 @@ public class MedicoRepository {
 
     public void update(MedicoModel mm) throws SQLException, ValidacaoException{
 
-        query = "UPDATE medico SET crm = ?, especialidade_id = ?, pessoa_id = ? WHERE id = ?";
+        query = "UPDATE medico SET pessoa_id = ? WHERE id = ?";
         
         try{
             conn = new ConnectionFactory().getConnection();
             pstmt = conn.prepareStatement(query);
-            pstmt.setString(1, mm.getCrm());
-            pstmt.setInt(2, mm.getEspecialidade_id().getId());
-            pstmt.setInt(3, mm.getPessoaModel().getId());
-            pstmt.setInt(4, mm.getId());
+            pstmt.setInt(1, mm.getPessoaModel().getId());
+            pstmt.setInt(2, mm.getId());
             
             pstmt.executeUpdate();
         } finally {

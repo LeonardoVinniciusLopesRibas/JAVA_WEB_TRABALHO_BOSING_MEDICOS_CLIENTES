@@ -23,7 +23,6 @@ public class ConsultaRepository {
         query = "INSERT INTO consulta (data_hora_consulta, paciente_id, medico_id, data_hora_fim_consulta, ativo) VALUES (?,?,?,?,?)";
 
         try {
-            //pstmt.setDate(2, new java.sql.Date(livro.getAnoLancamento().getTime()));
             conn = new ConnectionFactory().getConnection();
             pstmt = conn.prepareStatement(query);
 
@@ -44,7 +43,7 @@ public class ConsultaRepository {
 
             return conm;
 
-        } finally {
+        }finally {
 
             if (pstmt != null) {
                 pstmt.close();
