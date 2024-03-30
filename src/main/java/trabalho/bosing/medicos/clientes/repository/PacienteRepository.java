@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import trabalho.bosing.medicos.clientes.exception.ValidacaoException;
 import trabalho.bosing.medicos.clientes.infrastructure.ConnectionFactory;
 import trabalho.bosing.medicos.clientes.model.PacienteModel;
-import trabalho.bosing.medicos.clientes.model.PessoaModel;
 
 public class PacienteRepository {
 
