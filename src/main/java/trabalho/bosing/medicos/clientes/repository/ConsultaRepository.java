@@ -68,10 +68,10 @@ public class ConsultaRepository {
             while(rs.next()){
                 ConsultaModel conm = new ConsultaModel();
                 conm.setId(rs.getInt("id"));
-                conm.setDataHoraConsulta(rs.getDate("data_hora_consulta"));
+                conm.setDataHoraConsulta(rs.getTimestamp("data_hora_consulta"));
                 conm.setPaciente(new PacienteRepository().selectById(rs.getInt("paciente_id")));
                 conm.setMedico(new MedicoRepository().selectById(rs.getInt("medico_id")));
-                conm.setDataHoraFimConsulta(rs.getDate("data_hora_fim_consulta"));
+                conm.setDataHoraFimConsulta(rs.getTimestamp("data_hora_fim_consulta"));
                 
                 consulta.add(conm);
             }
@@ -100,14 +100,15 @@ public class ConsultaRepository {
             conn = new ConnectionFactory().getConnection();
             pstmt = conn.prepareStatement(query);
             pstmt.setInt(1, id);
+            rs = pstmt.executeQuery();
             
             while(rs.next()){
                 consultaModel = new ConsultaModel();
                 consultaModel.setId(rs.getInt("id"));
-                consultaModel.setDataHoraConsulta(rs.getDate("data_hora_consulta"));
+                consultaModel.setDataHoraConsulta(rs.getTimestamp("data_hora_consulta"));
                 consultaModel.setPaciente(new PacienteRepository().selectById(rs.getInt("paciente_id")));
                 consultaModel.setMedico(new MedicoRepository().selectById(rs.getInt("medico_id")));
-                consultaModel.setDataHoraFimConsulta(rs.getDate("data_hora_fim_consulta"));
+                consultaModel.setDataHoraFimConsulta(rs.getTimestamp("data_hora_fim_consulta"));
                 consultaModel.setAtivo(rs.getBoolean("ativo"));
             }
         }finally {
