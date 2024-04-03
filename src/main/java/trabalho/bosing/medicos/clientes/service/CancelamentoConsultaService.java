@@ -8,7 +8,7 @@ import trabalho.bosing.medicos.clientes.repository.CancelamentoConsultaRepositor
 
 public class CancelamentoConsultaService {
 
-    String erroInterno = "ERRO INTERNO NO SERVIDRO - CONTATE O SUPORTE";
+    String erroInterno = "ERRO INTERNO NO SERVIDOR - CONTATE O SUPORTE";
     CancelamentoConsultaRepository ccr = new CancelamentoConsultaRepository();
     public CancelamentoConsultaModel insert(CancelamentoConsultaModel ccm) throws ValidacaoException{
 
@@ -20,19 +20,16 @@ public class CancelamentoConsultaService {
             throw new ValidacaoException("Cancelamento deve ser preenchido");
         }
         
-        if(ccm.getMotivoCancelamento() != "DESISTENCIA" || ccm.getMotivoCancelamento() != "CANCELAMENTO" || ccm.getMotivoCancelamento()!= "OUTROS"){
+        if(!ccm.getMotivoCancelamento().equals("DESISTENCIA") && !ccm.getMotivoCancelamento().equals("CANCELAMENTO") && !ccm.getMotivoCancelamento().equals("OUTROS")){
             throw new ValidacaoException("PREENCHER APENAS DESISTENCIA, CANCELAMENTO OU OUTROS");
         }
         
-        if(ccm.getDataHoraCancelamentoConsulta() == null){
-            throw new ValidacaoException("Data de cancelamento não foi preenchida");
-        }
         
-        Instant agora = Instant.now();
-        Instant dataHoraCancelamentoInformada = ccm.getDataHoraCancelamentoConsulta().toInstant();
+        /*Instant agora = Instant.now();
+        Instant dataHoraCancelamentoInformada = agora;
         if(dataHoraCancelamentoInformada.isAfter(agora)){
             throw new ValidacaoException("Data não pode ser maior que a atual");
-        }
+        }*/
         
         try{
             return ccr.insert(ccm);
@@ -70,6 +67,9 @@ public class CancelamentoConsultaService {
 
         if (ccm.getId() <1) {
             throw new ValidacaoException("Id preenchido de maneira incorreta");
+        }
+        if(!ccm.getMotivoCancelamento().equals("DESISTENCIA") && !ccm.getMotivoCancelamento().equals("CANCELAMENTO") && !ccm.getMotivoCancelamento().equals("OUTROS")){
+            throw new ValidacaoException("PREENCHER APENAS DESISTENCIA, CANCELAMENTO OU OUTROS");
         }
         try {
             ccr.update(ccm);

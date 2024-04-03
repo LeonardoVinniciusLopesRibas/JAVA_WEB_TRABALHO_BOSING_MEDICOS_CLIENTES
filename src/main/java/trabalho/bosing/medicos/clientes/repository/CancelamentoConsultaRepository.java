@@ -4,12 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import trabalho.bosing.medicos.clientes.exception.ValidacaoException;
 import trabalho.bosing.medicos.clientes.infrastructure.ConnectionFactory;
 import trabalho.bosing.medicos.clientes.model.CancelamentoConsultaModel;
-
 
 public class CancelamentoConsultaRepository {
 
@@ -17,27 +19,34 @@ public class CancelamentoConsultaRepository {
     private Connection conn = null;
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
-    
-    public CancelamentoConsultaModel insert(CancelamentoConsultaModel ccm) throws SQLException, ValidacaoException{
+
+    public CancelamentoConsultaModel insert(CancelamentoConsultaModel ccm) throws SQLException, ValidacaoException {
 
         query = "INSERT INTO cancelamento_consulta (motivo_cancelamento, "
                 + "data_hora_cancelamento_consulta,"
                 + " consulta_id, ativo) VALUES(?, ?, ?, ?)";
-        
-        try{
+
+        try {
             conn = new ConnectionFactory().getConnection();
             pstmt = conn.prepareStatement(query);
+
+            /*
             
+            Instant agora = Instant.now();
+        Instant dataHoraCancelamentoInformada = agora;
+        if(dataHoraCancelamentoInformada.isAfter(agora)){
+            
+             */
             pstmt.setString(1, ccm.getMotivoCancelamento());
-            Date dataHoraCancelamento = ccm.getDataHoraCancelamentoConsulta();
-            pstmt.setTimestamp(2, new java.sql.Timestamp(dataHoraCancelamento.getTime()));
+            LocalDateTime agora = LocalDateTime.now();
+            pstmt.setTimestamp(2, Timestamp.valueOf(agora));
             pstmt.setInt(3, ccm.getConsulta().getId());
             pstmt.setBoolean(4, true);
-            
+
             pstmt.executeUpdate();
-            
+
             return ccm;
-        }finally {
+        } finally {
 
             if (pstmt != null) {
                 pstmt.close();
@@ -49,27 +58,27 @@ public class CancelamentoConsultaRepository {
 
     }
 
-    public ArrayList<CancelamentoConsultaModel> selectAll() throws SQLException, ValidacaoException{
+    public ArrayList<CancelamentoConsultaModel> selectAll() throws SQLException, ValidacaoException {
 
         ArrayList<CancelamentoConsultaModel> cancelamentoConsulta = new ArrayList<>();
         query = "SELECT id, motivo_cancelamento, "
                 + "data_hora_cancelamento_consulta, "
                 + "consulta_id FROM cancelamento_consulta WHERE ativo = true";
 
-        try{
+        try {
             conn = new ConnectionFactory().getConnection();
             pstmt = conn.prepareStatement(query);
             rs = pstmt.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 CancelamentoConsultaModel ccm = new CancelamentoConsultaModel();
                 ccm.setId(rs.getInt("id"));
                 ccm.setMotivoCancelamento(rs.getString("motivo_cancelamento"));
-                ccm.setDataHoraCancelamentoConsulta(rs.getDate("data_hora_cancelamento_consulta"));
+                ccm.setDataHoraCancelamentoConsulta(rs.getTimestamp("data_hora_cancelamento_consulta"));
                 ccm.setConsulta(new ConsultaRepository().selectById(rs.getInt("consulta_id")));
                 cancelamentoConsulta.add(ccm);
             }
-        }finally {
+        } finally {
             if (rs != null) {
                 rs.close();
             }
@@ -84,28 +93,29 @@ public class CancelamentoConsultaRepository {
 
     }
 
-    public CancelamentoConsultaModel selectById(int id) throws SQLException, ValidacaoException{
+    public CancelamentoConsultaModel selectById(int id) throws SQLException, ValidacaoException {
 
         CancelamentoConsultaModel cancelamentoConsulta = null;
         query = "SELECT id, motivo_cancelamento,"
                 + " data_hora_cancelamento_consulta,"
                 + " consulta_id, ativo"
                 + " FROM cancelamento_consulta WHERE id = ?";
-        
-        try{
+
+        try {
             conn = new ConnectionFactory().getConnection();
             pstmt = conn.prepareStatement(query);
             pstmt.setInt(1, id);
+            rs = pstmt.executeQuery();
             
-            while(rs.next()){
+            while (rs.next()) {
                 cancelamentoConsulta = new CancelamentoConsultaModel();
                 cancelamentoConsulta.setId(rs.getInt("id"));
                 cancelamentoConsulta.setMotivoCancelamento(rs.getString("motivo_cancelamento"));
-                cancelamentoConsulta.setDataHoraCancelamentoConsulta(rs.getDate("data_hora_cancelamento_consulta"));
+                cancelamentoConsulta.setDataHoraCancelamentoConsulta(rs.getTimestamp("data_hora_cancelamento_consulta"));
                 cancelamentoConsulta.setConsulta(new ConsultaRepository().selectById(rs.getInt("consulta_id")));
                 cancelamentoConsulta.setAtivo(rs.getBoolean("ativo"));
             }
-        }finally {
+        } finally {
             if (rs != null) {
                 rs.close();
             }
@@ -120,28 +130,23 @@ public class CancelamentoConsultaRepository {
 
     }
 
-    public void update(CancelamentoConsultaModel ccm) throws SQLException, ValidacaoException{
+    public void update(CancelamentoConsultaModel ccm) throws SQLException, ValidacaoException {
 
         query = "UPDATE cancelamento_consulta "
                 + "SET motivo_cancelamento = ?, "
-                + "data_hora_cancelamento_consulta = ?, "
                 + "consulta_id = ? WHERE id = ?";
-        
-        try{
+
+        try {
             conn = new ConnectionFactory().getConnection();
             pstmt = conn.prepareStatement(query);
-            
             pstmt.setString(1, ccm.getMotivoCancelamento());
-            
-            Date dataHoraCancelamento = ccm.getDataHoraCancelamentoConsulta();
-            pstmt.setTimestamp(2, new java.sql.Timestamp(dataHoraCancelamento.getTime()));
-            pstmt.setInt(3, ccm.getConsulta().getId());
-            
-            pstmt.setInt(4, ccm.getId());
-            
+            //Date dataHoraCancelamento = ccm.getDataHoraCancelamentoConsulta();
+            //pstmt.setTimestamp(2, new java.sql.Timestamp(dataHoraCancelamento.getTime()));
+            pstmt.setInt(2, ccm.getConsulta().getId());
+            pstmt.setInt(3, ccm.getId());
             pstmt.executeUpdate();
-            
-        }finally {
+
+        } finally {
             if (pstmt != null) {
                 pstmt.close();
             }
@@ -152,16 +157,16 @@ public class CancelamentoConsultaRepository {
 
     }
 
-    public void desativated(CancelamentoConsultaModel ccm) throws SQLException, ValidacaoException{
+    public void desativated(CancelamentoConsultaModel ccm) throws SQLException, ValidacaoException {
 
         query = "UPDATE cancelamento_consulta SET ativo = ? WHERE id = ?";
-        try{
+        try {
             conn = new ConnectionFactory().getConnection();
             pstmt = conn.prepareStatement(query);
             pstmt.setBoolean(1, false);
             pstmt.setInt(2, ccm.getId());
             pstmt.executeUpdate();
-        }finally {
+        } finally {
             if (pstmt != null) {
                 pstmt.close();
             }
@@ -171,5 +176,5 @@ public class CancelamentoConsultaRepository {
         }
 
     }
-    
+
 }
