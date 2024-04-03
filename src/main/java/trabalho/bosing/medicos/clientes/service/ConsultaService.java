@@ -90,14 +90,22 @@ public class ConsultaService {
 
     }
 
-    public ConsultaModel desativated(ConsultaModel conm) throws ValidacaoException {
+    public ConsultaModel desativated(ConsultaModel conm, String motivoCancelamento) throws ValidacaoException {
 
         if (conm.getId() < 1) {
             throw new ValidacaoException("Id preenchido de maneira incorreta");
         }
+        if(motivoCancelamento.length() <1){
+            throw new ValidacaoException("Informe um motivo de cancelamento, dentre DESISTENCIA, CANCELAMENTO e OUTROS!");
+        }
 
+        
+        if(!motivoCancelamento.equals("DESISTENCIA") && !motivoCancelamento.equals("CANCELAMENTO") && !motivoCancelamento.equals("OUTROS")){
+            throw new ValidacaoException("PREENCHER APENAS DESISTENCIA, CANCELAMENTO OU OUTROS");
+        }
+        
         try {
-            conr.desativated(conm);
+            conr.desativated(conm, motivoCancelamento);
             return conm;
         } catch (Exception ex) {
             throw new ValidacaoException(erroInterno);

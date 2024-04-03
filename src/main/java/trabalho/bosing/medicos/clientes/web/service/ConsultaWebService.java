@@ -42,9 +42,9 @@ public class ConsultaWebService implements IConsultaInterface{
     }
 
     @Override
-    public ConsultaModel desativatedConsulta(ConsultaModel conm) throws SQLException, ValidacaoException {
+    public ConsultaModel desativatedConsulta(ConsultaModel conm, String motivoCancelamento) throws SQLException, ValidacaoException {
         
-        return cons.desativated(conm);
+        return cons.desativated(conm, motivoCancelamento);
         
     }
     

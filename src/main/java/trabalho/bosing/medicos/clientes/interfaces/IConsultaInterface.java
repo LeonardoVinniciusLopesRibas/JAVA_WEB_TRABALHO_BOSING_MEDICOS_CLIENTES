@@ -23,6 +23,6 @@ public interface IConsultaInterface {
     ConsultaModel updateConsulta (ConsultaModel conm) throws SQLException, ValidacaoException;
     
     @WebMethod
-    ConsultaModel desativatedConsulta (ConsultaModel conm) throws SQLException, ValidacaoException;
+    ConsultaModel desativatedConsulta (ConsultaModel conm, String motivoCancelamento) throws SQLException, ValidacaoException;
     
 }

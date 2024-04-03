@@ -5,13 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import trabalho.bosing.medicos.clientes.exception.ValidacaoException;
 import trabalho.bosing.medicos.clientes.infrastructure.ConnectionFactory;
 import trabalho.bosing.medicos.clientes.model.CancelamentoConsultaModel;
+import trabalho.bosing.medicos.clientes.model.ConsultaModel;
 
 public class CancelamentoConsultaRepository {
 
@@ -166,6 +165,10 @@ public class CancelamentoConsultaRepository {
             pstmt.setBoolean(1, false);
             pstmt.setInt(2, ccm.getId());
             pstmt.executeUpdate();
+            ConsultaRepository conr = new ConsultaRepository();
+            ConsultaModel conm = new ConsultaModel();
+            int id = ccm.getId();
+            conr.activatedDiferenciado(conm, id);
         } finally {
             if (pstmt != null) {
                 pstmt.close();
@@ -177,4 +180,30 @@ public class CancelamentoConsultaRepository {
 
     }
 
+    void insertDiferenciado(ConsultaModel conm, String motivoCancelamento)throws SQLException, ValidacaoException {
+
+        query = "INSERT INTO cancelamento_consulta (motivo_cancelamento, data_hora_cancelamento_consulta, consulta_id, ativo) VALUES(?, ?, ?, ?)";
+
+        try{
+            conn = new ConnectionFactory().getConnection();
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, motivoCancelamento);
+            LocalDateTime agora = LocalDateTime.now();
+            pstmt.setTimestamp(2, Timestamp.valueOf(agora));
+            pstmt.setInt(3, conm.getId());
+            pstmt.setBoolean(4, true);
+            pstmt.executeUpdate();
+
+        }finally {
+
+            if (pstmt != null) {
+                pstmt.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+    }
+
 }
+

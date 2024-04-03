@@ -1,6 +1,5 @@
 package trabalho.bosing.medicos.clientes.service;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import trabalho.bosing.medicos.clientes.exception.ValidacaoException;
 import trabalho.bosing.medicos.clientes.model.CancelamentoConsultaModel;
@@ -23,13 +22,6 @@ public class CancelamentoConsultaService {
         if(!ccm.getMotivoCancelamento().equals("DESISTENCIA") && !ccm.getMotivoCancelamento().equals("CANCELAMENTO") && !ccm.getMotivoCancelamento().equals("OUTROS")){
             throw new ValidacaoException("PREENCHER APENAS DESISTENCIA, CANCELAMENTO OU OUTROS");
         }
-        
-        
-        /*Instant agora = Instant.now();
-        Instant dataHoraCancelamentoInformada = agora;
-        if(dataHoraCancelamentoInformada.isAfter(agora)){
-            throw new ValidacaoException("Data não pode ser maior que a atual");
-        }*/
         
         try{
             return ccr.insert(ccm);

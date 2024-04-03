@@ -155,7 +155,7 @@ public class ConsultaRepository {
         }
     }
 
-    public void desativated(ConsultaModel conm) throws SQLException, ValidacaoException {
+    public void desativated(ConsultaModel conm, String motivoCancelamento) throws SQLException, ValidacaoException {
 
         query = "UPDATE consulta SET ativo = ? WHERE id = ?";
         
@@ -165,6 +165,8 @@ public class ConsultaRepository {
             pstmt.setBoolean(1,false);
             pstmt.setInt(2, conm.getId());
             pstmt.executeUpdate();
+            CancelamentoConsultaRepository ccr = new CancelamentoConsultaRepository();
+            ccr.insertDiferenciado(conm, motivoCancelamento);
         }finally {
             if (pstmt != null) {
                 pstmt.close();
@@ -174,6 +176,27 @@ public class ConsultaRepository {
             }
         }
 
+    }
+
+    void activatedDiferenciado(ConsultaModel conm, int id) throws SQLException, ValidacaoException {
+
+        query = "UPDATE consulta SET ativo = ? WHERE id = ?";
+        
+        try{
+            conn = new ConnectionFactory().getConnection();
+            pstmt = conn.prepareStatement(query);
+            pstmt.setBoolean(1,true);
+            pstmt.setInt(2, id);
+            pstmt.executeUpdate();
+        }finally {
+            if (pstmt != null) {
+                pstmt.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        
     }
 
 }
