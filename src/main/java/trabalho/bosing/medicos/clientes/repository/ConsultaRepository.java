@@ -10,6 +10,8 @@ import java.util.Date;
 import trabalho.bosing.medicos.clientes.exception.ValidacaoException;
 import trabalho.bosing.medicos.clientes.infrastructure.ConnectionFactory;
 import trabalho.bosing.medicos.clientes.model.ConsultaModel;
+import trabalho.bosing.medicos.clientes.model.MedicoModel;
+import trabalho.bosing.medicos.clientes.model.PacienteModel;
 
 public class ConsultaRepository {
 
@@ -196,6 +198,72 @@ public class ConsultaRepository {
         }
     }
 
-    
-    
+    public ArrayList<ConsultaModel> selectByPacienteAndDate(PacienteModel paciente, Date data) throws SQLException, ValidacaoException {
+        ArrayList<ConsultaModel> consultas = new ArrayList<>();
+        query = "SELECT id, data_hora_consulta, paciente_id, medico_id, data_hora_fim_consulta FROM consulta WHERE paciente_id = ? AND DATE(data_hora_consulta) = ?";
+        try {
+            conn = new ConnectionFactory().getConnection();
+            pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, paciente.getId());
+            pstmt.setDate(2, new java.sql.Date(data.getTime()));
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                ConsultaModel conm = new ConsultaModel();
+                conm.setId(rs.getInt("id"));
+                conm.setDataHoraConsulta(rs.getTimestamp("data_hora_consulta"));
+                conm.setPaciente(paciente);
+                conm.setMedico(new MedicoRepository().selectById(rs.getInt("medico_id")));
+                conm.setDataHoraFimConsulta(rs.getTimestamp("data_hora_fim_consulta"));
+
+                consultas.add(conm);
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (pstmt != null) {
+                pstmt.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return consultas;
+    }
+
+    public ArrayList<ConsultaModel> selectByMedicoAndDate(MedicoModel medico, Date dataHoraConsulta) throws SQLException, ValidacaoException {
+        ArrayList<ConsultaModel> consultas = new ArrayList<>();
+        query = "SELECT id, data_hora_consulta, paciente_id, medico_id, data_hora_fim_consulta FROM consulta WHERE medico_id = ? AND data_hora_consulta = ?";
+        try {
+            conn = new ConnectionFactory().getConnection();
+            pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, medico.getId());
+            pstmt.setTimestamp(2, new java.sql.Timestamp(dataHoraConsulta.getTime()));
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                ConsultaModel conm = new ConsultaModel();
+                conm.setId(rs.getInt("id"));
+                conm.setDataHoraConsulta(rs.getTimestamp("data_hora_consulta"));
+                conm.setPaciente(new PacienteRepository().selectById(rs.getInt("paciente_id")));
+                conm.setMedico(medico);
+                conm.setDataHoraFimConsulta(rs.getTimestamp("data_hora_fim_consulta"));
+
+                consultas.add(conm);
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (pstmt != null) {
+                pstmt.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return consultas;
+    }
+
 }
