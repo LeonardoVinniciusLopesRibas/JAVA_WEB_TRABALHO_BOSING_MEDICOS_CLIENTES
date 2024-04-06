@@ -105,7 +105,7 @@ public class CancelamentoConsultaRepository {
             pstmt = conn.prepareStatement(query);
             pstmt.setInt(1, id);
             rs = pstmt.executeQuery();
-            
+
             while (rs.next()) {
                 cancelamentoConsulta = new CancelamentoConsultaModel();
                 cancelamentoConsulta.setId(rs.getInt("id"));
@@ -165,10 +165,11 @@ public class CancelamentoConsultaRepository {
             pstmt.setBoolean(1, false);
             pstmt.setInt(2, ccm.getId());
             pstmt.executeUpdate();
-            ConsultaRepository conr = new ConsultaRepository();
+
             ConsultaModel conm = new ConsultaModel();
-            int id = ccm.getId();
-            conr.activatedDiferenciado(conm, id);
+            ConsultaRepository conr = new ConsultaRepository();
+            conr.activatedDiferenciado(conm, ccm.getConsulta().getId());
+
         } finally {
             if (pstmt != null) {
                 pstmt.close();
@@ -180,11 +181,11 @@ public class CancelamentoConsultaRepository {
 
     }
 
-    void insertDiferenciado(ConsultaModel conm, String motivoCancelamento)throws SQLException, ValidacaoException {
+    void insertDiferenciado(ConsultaModel conm, String motivoCancelamento) throws SQLException, ValidacaoException {
 
         query = "INSERT INTO cancelamento_consulta (motivo_cancelamento, data_hora_cancelamento_consulta, consulta_id, ativo) VALUES(?, ?, ?, ?)";
 
-        try{
+        try {
             conn = new ConnectionFactory().getConnection();
             pstmt = conn.prepareStatement(query);
             pstmt.setString(1, motivoCancelamento);
@@ -194,7 +195,7 @@ public class CancelamentoConsultaRepository {
             pstmt.setBoolean(4, true);
             pstmt.executeUpdate();
 
-        }finally {
+        } finally {
 
             if (pstmt != null) {
                 pstmt.close();
@@ -206,4 +207,3 @@ public class CancelamentoConsultaRepository {
     }
 
 }
-

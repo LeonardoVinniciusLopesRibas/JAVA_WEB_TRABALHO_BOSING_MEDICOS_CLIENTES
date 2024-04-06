@@ -77,6 +77,9 @@ public class CancelamentoConsultaService {
         if (ccm.getId() <1) {
             throw new ValidacaoException("Id preenchido de maneira incorreta");
         }
+        if(ccm.getConsulta().getId() < 1){
+            throw new ValidacaoException("Id da consulta não preenchido!");
+        }
 
         try {
             ccr.desativated(ccm);

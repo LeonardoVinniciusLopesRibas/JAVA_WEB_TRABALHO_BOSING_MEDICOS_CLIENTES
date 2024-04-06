@@ -43,7 +43,7 @@ public class ConsultaRepository {
 
             return conm;
 
-        }finally {
+        } finally {
 
             if (pstmt != null) {
                 pstmt.close();
@@ -59,23 +59,23 @@ public class ConsultaRepository {
 
         ArrayList<ConsultaModel> consulta = new ArrayList<>();
         query = "SELECT id, data_hora_consulta, paciente_id, medico_id, data_hora_fim_consulta FROM consulta WHERE ativo = true";
-                
-        try{
+
+        try {
             conn = new ConnectionFactory().getConnection();
             pstmt = conn.prepareStatement(query);
             rs = pstmt.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 ConsultaModel conm = new ConsultaModel();
                 conm.setId(rs.getInt("id"));
                 conm.setDataHoraConsulta(rs.getTimestamp("data_hora_consulta"));
                 conm.setPaciente(new PacienteRepository().selectById(rs.getInt("paciente_id")));
                 conm.setMedico(new MedicoRepository().selectById(rs.getInt("medico_id")));
                 conm.setDataHoraFimConsulta(rs.getTimestamp("data_hora_fim_consulta"));
-                
+
                 consulta.add(conm);
             }
-        }finally {
+        } finally {
             if (rs != null) {
                 rs.close();
             }
@@ -93,16 +93,16 @@ public class ConsultaRepository {
     public ConsultaModel selectById(int id) throws SQLException, ValidacaoException {
 
         ConsultaModel consultaModel = null;
-        
+
         query = "SELECT id, data_hora_consulta, paciente_id, medico_id, data_hora_fim_consulta, ativo FROM consulta WHERE id = ?";
-        
-        try{
+
+        try {
             conn = new ConnectionFactory().getConnection();
             pstmt = conn.prepareStatement(query);
             pstmt.setInt(1, id);
             rs = pstmt.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 consultaModel = new ConsultaModel();
                 consultaModel.setId(rs.getInt("id"));
                 consultaModel.setDataHoraConsulta(rs.getTimestamp("data_hora_consulta"));
@@ -111,7 +111,7 @@ public class ConsultaRepository {
                 consultaModel.setDataHoraFimConsulta(rs.getTimestamp("data_hora_fim_consulta"));
                 consultaModel.setAtivo(rs.getBoolean("ativo"));
             }
-        }finally {
+        } finally {
             if (rs != null) {
                 rs.close();
             }
@@ -128,16 +128,16 @@ public class ConsultaRepository {
     public void update(ConsultaModel conm) throws SQLException, ValidacaoException {
 
         query = "UPDATE consulta SET data_hora_consulta = ?, paciente_id = ?, medico_id = ?, data_hora_fim_consulta = ? WHERE id = ?";
-        
-        try{
+
+        try {
             conn = new ConnectionFactory().getConnection();
             pstmt = conn.prepareStatement(query);
-            
+
             Date dataHoraInicio = conm.getDataHoraConsulta();
             pstmt.setTimestamp(1, new java.sql.Timestamp(dataHoraInicio.getTime()));
             pstmt.setInt(2, conm.getPaciente().getId());
             pstmt.setInt(3, conm.getMedico().getId());
-            
+
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(dataHoraInicio);
             calendar.add(Calendar.HOUR, 1);
@@ -145,7 +145,7 @@ public class ConsultaRepository {
             pstmt.setTimestamp(4, new java.sql.Timestamp(dataHoraFim.getTime()));
             pstmt.setInt(5, conm.getId());
             pstmt.executeUpdate();
-        }finally {
+        } finally {
             if (pstmt != null) {
                 pstmt.close();
             }
@@ -158,16 +158,16 @@ public class ConsultaRepository {
     public void desativated(ConsultaModel conm, String motivoCancelamento) throws SQLException, ValidacaoException {
 
         query = "UPDATE consulta SET ativo = ? WHERE id = ?";
-        
-        try{
+
+        try {
             conn = new ConnectionFactory().getConnection();
             pstmt = conn.prepareStatement(query);
-            pstmt.setBoolean(1,false);
+            pstmt.setBoolean(1, false);
             pstmt.setInt(2, conm.getId());
             pstmt.executeUpdate();
             CancelamentoConsultaRepository ccr = new CancelamentoConsultaRepository();
             ccr.insertDiferenciado(conm, motivoCancelamento);
-        }finally {
+        } finally {
             if (pstmt != null) {
                 pstmt.close();
             }
@@ -179,16 +179,14 @@ public class ConsultaRepository {
     }
 
     void activatedDiferenciado(ConsultaModel conm, int id) throws SQLException, ValidacaoException {
-
         query = "UPDATE consulta SET ativo = ? WHERE id = ?";
-        
-        try{
+        try {
             conn = new ConnectionFactory().getConnection();
             pstmt = conn.prepareStatement(query);
-            pstmt.setBoolean(1,true);
+            pstmt.setBoolean(1, true);
             pstmt.setInt(2, id);
             pstmt.executeUpdate();
-        }finally {
+        } finally {
             if (pstmt != null) {
                 pstmt.close();
             }
@@ -196,7 +194,8 @@ public class ConsultaRepository {
                 conn.close();
             }
         }
-        
     }
 
+    
+    
 }
